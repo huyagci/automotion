@@ -5,20 +5,28 @@ on:
     branches:
       - dev
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Push To Gitlab
-        env:
-          GITLAB_AT: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+      - name: Configure Git Settings
         run: |
           git config --global user.name "Hasan Umut Yagci"
           git config --global user.email "hasanumutyagci@gmail.com"
-          git remote add gitlab "https://oauth2:${GITLAB_AT}@gitlab.com/huyagci/bootcamp-final-project.git"
-          git push gitlab dev
+
+      - name: Add Gitlab Repository to Git Remotes
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        run: git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/huyagci/bootcamp-final-project.git"
+
+      - name: Push to Gitlab
+        run: git push gitlab dev
