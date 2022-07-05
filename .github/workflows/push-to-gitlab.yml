@@ -29,4 +29,4 @@ jobs:
         run: git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/huyagci/bootcamp-final-project.git"
 
       - name: Push to Gitlab
-        run: git push gitlab dev
+        run: git push gitlab dev --force
