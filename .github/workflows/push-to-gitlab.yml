@@ -1,0 +1,22 @@
+name: Push to Gitlab
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Push To Gitlab
+        env:
+          GITLAB_AT: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        run: |
+          git config --global user.name "Hasan Umut Yagci"
+          git config --global user.email "hasanumutyagci@gmail.com"
+          git remote add gitlab "https://oauth2:${GITLAB_AT}@gitlab.com/huyagci/bootcamp-final-project.git"
+          git push gitlab dev
