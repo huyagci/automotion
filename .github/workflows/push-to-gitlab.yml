@@ -9,6 +9,11 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+    push:
+    branches:
+      - dev
+
 jobs:
   push:
     runs-on: self-hosted
