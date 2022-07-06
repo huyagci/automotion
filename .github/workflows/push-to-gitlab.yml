@@ -10,9 +10,6 @@ on:
       - main
 
   workflow_dispatch:
-    push:
-    branches:
-      - dev
 
 jobs:
   push:
