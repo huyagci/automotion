@@ -31,7 +31,7 @@ jobs:
       - name: Add Gitlab Repository to Git Remotes
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
-        run: git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/huyagci/bootcamp-final-project.git"
+        run: git remote set-url gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/huyagci/bootcamp-final-project.git"
 
       - name: Push to Gitlab
         run: git push gitlab dev --force
