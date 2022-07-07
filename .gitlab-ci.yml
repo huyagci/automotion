@@ -8,7 +8,12 @@ build-app:
   stage: build-app
   image: node:18.4.0-alpine3.16
   script:
+    - cd app/
+    - npm install
     - npm run build
+  artifacts:
+    paths:
+      - app/build/
 
 build-docker-image:
   stage: build-docker-image
