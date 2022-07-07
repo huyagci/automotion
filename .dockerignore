@@ -7,7 +7,7 @@
 **/.gitignore
 
 # Sample Project Files
-app/build
+# app/build
 app/node_modules
 app/npm-debug.log
 
