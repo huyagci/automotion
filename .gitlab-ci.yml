@@ -6,6 +6,7 @@ stages: # List of stages for jobs, and their order of execution
 
 build-app:
   stage: build-app
+  image: node:18.4.0-alpine3.16
   script:
     - npm run build
 
