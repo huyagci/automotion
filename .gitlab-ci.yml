@@ -8,12 +8,13 @@ build-app:
   stage: build-app
   image: node:18.4.0-alpine3.16
   script:
-    - cd app/
-    - npm install
+    - cd ./app/
+    # -
+    - npm install --save react react-dom react-scripts
     - npm run build
   artifacts:
     paths:
-      - app/build/
+      - ./app/build/
 
 build-docker-image:
   stage: build-docker-image
@@ -26,3 +27,6 @@ build-docker-image:
     - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
     - docker build -f Dockerfile.build . -t $CI_REGISTRY_IMAGE
     - docker push -a $CI_REGISTRY_IMAGE
+
+  # stage: push-to-glcr
+  #   script:
