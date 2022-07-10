@@ -1,0 +1,43 @@
+name: Push to Gitlab
+
+on:
+  push:
+    branches:
+      - dev
+
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  push-to-gitlab:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git Settings
+        run: |
+          git config --global user.name "Hasan Umut Yagci"
+          git config --global user.email "hasanumutyagci@gmail.com"
+
+      - name: Add Gitlab Repository to Git Remotes
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+          GITLAB_URL: ${{ secrets.GITLAB_REPO_URL }}
+        run: |
+          git config remote.gitlab.url >&- || git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@${GITLAB_URL}"
+
+      - name: Push dev branch to Gitlab
+        if: github.ref == 'refs/heads/dev'
+        run: git push --force gitlab dev
+
+      - name: Push main branch to Gitlab
+        if: (github.ref == 'refs/heads/main' && github.event.pull_request.merged == 'true')
+        run: git push --force gitlab main

@@ -1,0 +1,64 @@
+name: Development Job
+description: Default issue form for new development jobs.
+assignees: huyagci
+labels: [":hammer_and_wrench: Development"]
+body:
+  - type: textarea
+    attributes:
+      label: ":memo: Tasks"
+      description: "Mandatory tasks will be written here."
+      value: |
+        - [ ] Task 1
+        - [ ] Task 2
+        - [ ] Task 3
+        - [ ] Task 4
+        - [ ] Task 5
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: ":clipboard: Optional Tasks"
+      description: "Tasks written here will be undertaken additionally. (Remove list items or info text)"
+      value: |
+        "No additional tasks were defined."
+
+        - [ ] Optional Task 1
+        - [ ] Optional Task 2
+        - [ ] Optional Task 3
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: ":pushpin: Remarks & Notes"
+      description: "Submit any kind of remarks or notes here if any. (Remove list items or info text)"
+      value: |
+        "No additional information exists."
+
+        - Information 1
+        - Information 2
+        - Information 3
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: ":card_file_box: Resources"
+      description: "Submit the link of used resources here if any. (Remove list items or info text)"
+      value: |
+        "No additional resources were used."
+
+        - [#res-desc-here](#link-here)
+        - [#res-desc-here](#link-here)
+        - [#res-desc-here](#link-here)
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## :warning: Warnings
+        - Select the sub-label by related scope.
+        - Add this issue to the project board.
+        - Select the milestone by corresponding sprint.

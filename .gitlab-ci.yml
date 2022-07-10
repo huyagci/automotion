@@ -1,0 +1,65 @@
+# List of stages for jobs, and their order of execution
+stages:
+  - Compile
+  - Package
+  - Publish
+
+Build App:
+  stage: Compile
+  image: node:18.4.0-alpine3.16
+  before_script:
+    - cd ./app
+  script:
+    - npm ci --only=prod
+    - npm run build
+  artifacts:
+    when: on_success
+    paths:
+      - ./app/build/
+
+dockerizeAndPublish:
+  stage: Package
+  image: docker
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  dependencies:
+    - Build App
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - docker build -f Dockerfile.build . -t $CI_REGISTRY_IMAGE
+    - docker push -a $CI_REGISTRY_IMAGE
+  after_script:
+    - docker logout
+
+push-to-ecr:
+  stage: Publish
+  image:
+    name: amazon/aws-cli
+    # Unset default entrypoint of the image which is "aws"
+    entrypoint: [""]
+  services:
+    - docker:dind
+  variables:
+    SOURCE_IMAGE: $CI_REGISTRY_IMAGE
+    IMAGE_NAME: protein-app
+    IMAGE_TAG: latest
+    RELEASE_IMAGE: $ECR_REPOSITORY/$IMAGE_NAME:$IMAGE_TAG
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  dependencies:
+    - dockerizeAndPublish
+  before_script:
+    - amazon-linux-extras install docker
+    - aws --version
+    - docker --version
+    - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+    - docker pull $CI_REGISTRY_IMAGE
+    - docker tag $SOURCE_IMAGE $RELEASE_IMAGE
+  script:
+    - aws ecr-public get-login-password | docker login $ECR_REPOSITORY --username AWS --password-stdin
+    - docker push $RELEASE_IMAGE
+  after_script:
+    - docker logout
