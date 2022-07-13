@@ -1,0 +1,32 @@
+stages:
+  - Initialize
+  - Plan
+  - Apply
+
+.config:
+  image:
+    name: hashicorp/terraform:latest
+    entrypoint: [""]
+  when: manual
+  before_script:
+    - cd ./terraform
+    - terraform fmt -input=false
+    - terraform init -input=false
+
+terraform plan:
+  extends: .config
+  stage: Plan
+  script:
+    - terraform plan -out tf-plan.plan -input=false
+  artifacts:
+    paths:
+      - tf-plans/tf-plan.plan
+    expire_in: 1 hrs
+
+terraform apply:
+  extends: .config
+  stage: Apply
+  dependencies:
+    - terraform plan
+  script:
+    - terraform apply -input=false tf-plan.plan
