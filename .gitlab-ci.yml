@@ -3,6 +3,7 @@ stages:
   - Compile
   - Package
   - Publish
+  - Deploy
 
 Build App:
   stage: Compile
@@ -63,6 +64,9 @@ push-to-ecr:
     - docker push $RELEASE_IMAGE
   after_script:
     - docker logout
+
+Deploy with Terraform:
+  stage: Deploy
   trigger:
     include:
-      - local: "./.gitlab-terraform.yml"
+      - local: gitlab-terraform.yml
