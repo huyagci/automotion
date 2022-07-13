@@ -9,7 +9,7 @@ stages:
   when: manual
   before_script:
     - cd ./terraform
-    - terraform fmt -input=false
+    - terraform fmt
     - terraform init -input=false
 
 terraform plan:
