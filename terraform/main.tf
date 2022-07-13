@@ -13,6 +13,10 @@ provider "aws" {
   region     = var.AWS_DEFAULT_REGION
 }
 
+module "iam" {
+  source = "./modules/iam"
+}
+
 module "security" {
   source = "./modules/security"
 
