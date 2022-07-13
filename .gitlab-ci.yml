@@ -63,3 +63,6 @@ push-to-ecr:
     - docker push $RELEASE_IMAGE
   after_script:
     - docker logout
+  trigger:
+    include:
+      - local: "./.gitlab-terraform.yml"
