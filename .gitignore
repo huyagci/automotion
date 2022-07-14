@@ -1,3 +1,6 @@
-**/.terraform/
-**/credentials.tfvars
-**.tfplan
+**/.terraform
+*.tfvars
+*.tfplan
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
