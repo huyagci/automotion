@@ -28,6 +28,10 @@ module "dynamodb" {
   source = "./modules/dynamodb"
 }
 
+module "s3" {
+  source = "./modules/s3"
+}
+
 module "ecs" {
   source = "./modules/ecs"
 
