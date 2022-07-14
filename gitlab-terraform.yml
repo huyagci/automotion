@@ -28,4 +28,4 @@ terraform apply:
   dependencies:
     - terraform plan
   script:
-    - terraform apply -input=false tf-plan.plan
+    - terraform apply tf-plan.plan -input=false -auto-approve
