@@ -24,6 +24,10 @@ module "alb" {
   PUBLIC_SUBNET_1C = module.vpc.PUBLIC_SUBNET_1C
 }
 
+module "backend" {
+  source = "./modules/backend"
+}
+
 module "dynamodb" {
   source = "./modules/dynamodb"
 }
