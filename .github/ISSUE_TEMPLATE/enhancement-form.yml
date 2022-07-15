@@ -5,7 +5,7 @@ labels: [":recycle: Enhancement"]
 body:
   - type: textarea
     attributes:
-      label: ":wastebasket: Discarded"
+      label: "🗑️ Discarded"
       description: "Features written here are discarded."
       value: |
         1. Discarded Feature 1
@@ -16,7 +16,7 @@ body:
 
   - type: textarea
     attributes:
-      label: ":white_check_mark: Improvements"
+      label: "✅ Improvements"
       description: "Features written here will be improved accordingly."
       value: |
         1. Improvement 1 
@@ -27,7 +27,7 @@ body:
 
   - type: textarea
     attributes:
-      label: ":pushpin: Remarks & Notes"
+      label: "📌 Remarks & Notes"
       description: "Submit any kind of remarks or notes here if any. (Remove list items or info text)"
       value: |
         "No additional information exists."
@@ -40,7 +40,7 @@ body:
 
   - type: textarea
     attributes:
-      label: ":card_file_box: Resources"
+      label: "🗃️ Resources"
       description: "Submit the link of used resources here if any. (Remove list items or info text)"
       value: |
         "No additional resources were used."

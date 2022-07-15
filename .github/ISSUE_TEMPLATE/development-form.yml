@@ -5,7 +5,7 @@ labels: [":hammer_and_wrench: Development"]
 body:
   - type: textarea
     attributes:
-      label: ":memo: Tasks"
+      label: "📝 Tasks"
       description: "Mandatory tasks will be written here."
       value: |
         - [ ] Task 1
@@ -18,7 +18,7 @@ body:
 
   - type: textarea
     attributes:
-      label: ":clipboard: Optional Tasks"
+      label: "📋 Optional Tasks"
       description: "Tasks written here will be undertaken additionally. (Remove list items or info text)"
       value: |
         "No additional tasks were defined."
@@ -31,7 +31,7 @@ body:
 
   - type: textarea
     attributes:
-      label: ":pushpin: Remarks & Notes"
+      label: "📌 Remarks & Notes"
       description: "Submit any kind of remarks or notes here if any. (Remove list items or info text)"
       value: |
         "No additional information exists."
@@ -44,7 +44,7 @@ body:
 
   - type: textarea
     attributes:
-      label: ":card_file_box: Resources"
+      label: "🗃️ Resources"
       description: "Submit the link of used resources here if any. (Remove list items or info text)"
       value: |
         "No additional resources were used."
