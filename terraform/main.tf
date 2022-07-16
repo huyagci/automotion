@@ -14,6 +14,10 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = var.AWS_SELECTED_REGION
+}
+
 module "alb" {
   source = "./modules/alb"
 
@@ -61,4 +65,6 @@ module "security" {
 
 module "vpc" {
   source = "./modules/vpc"
+
+  AWS_SELECTED_REGION = var.AWS_SELECTED_REGION
 }
