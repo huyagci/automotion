@@ -1,21 +1,21 @@
 # Terraform
-
-*/.terraform
+**/.terraform
 *.tfvars
+*.auto.tfvars
 *.tfplan
 *.tfstate
 *.tfstate.backup
 *.tfstate.lock.info
 
 # Vagrant
-*/.vagrant
+**/.vagrant
 
-# React
-*/node_modules
-*/.pnp
+# React App
+**/node_modules
+**/build
+**/coverage
+**/.pnp
 *.pnp.js
-*/coverage
-*/build
 *.DS_Store
 *.env.local
 *.env.development.local
