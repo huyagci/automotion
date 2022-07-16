@@ -14,7 +14,7 @@ resource "aws_ecs_task_definition" "task_definition" {
 
   container_definitions = jsonencode([
     {
-      name      = "nginx-container"
+      name      = "protein-app"
       image     = "public.ecr.aws/n9s8n8z4/protein-app"
       essential = true
 

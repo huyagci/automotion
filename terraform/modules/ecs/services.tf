@@ -12,14 +12,14 @@ resource "aws_ecs_service" "service" {
   network_configuration {
     security_groups = [var.ECS_SG_ID]
     # Should be deployed to private subnets but requires nat gateway on public subnet and elastic ip
-    subnets = [var.PUBLIC_SUBNET_1A, var.PUBLIC_SUBNET_1B, var.PUBLIC_SUBNET_1C]
+    subnets = [var.PRIVATE_SUBNET_1A, var.PRIVATE_SUBNET_1B, var.PRIVATE_SUBNET_1C]
     # Should be assigned to false when deploying on private subnets
-    assign_public_ip = true
+    assign_public_ip = false
   }
 
   load_balancer {
     target_group_arn = var.TARGET_GROUP_ARN
-    container_name   = "nginx-container"
+    container_name   = "protein-app"
     container_port   = 80
   }
 
