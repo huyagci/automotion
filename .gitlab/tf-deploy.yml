@@ -1,6 +1,10 @@
 stages:
   - Plan
   - Apply
+  - Destroy
+
+variables:
+  TF_ROOT: $CI_PROJECT_DIR/terraform
 
 .config:
   image:
@@ -8,9 +12,9 @@ stages:
     entrypoint: [""]
     pull_policy: if-not-present
   before_script:
-    - cd ./terraform
+    - cd $TF_ROOT
     - terraform fmt
-    - terraform init -input=false --backend-config "access_key=$AWS_ACCESS_KEY" -backend-config "secret_key=$AWS_SECRET_KEY"
+    - terraform init -input=false #--backend-config="access_key=$AWS_ACCESS_KEY" -backend-config="secret_key=$AWS_SECRET_KEY"
 
 terraform plan:
   extends: .config
@@ -18,8 +22,10 @@ terraform plan:
   script:
     - terraform plan -out aws.tfplan -input=false
   artifacts:
+    when: on_success
+    name: terraform-plan
     paths:
-      - tf-plans/aws.tfplan
+      - $TF_ROOT/aws.tfplan
     expire_in: 1 hrs
 
 terraform apply:
@@ -33,6 +39,8 @@ terraform apply:
 
 terraform destroy:
   extends: .config
+  stage: Destroy
   when: manual
+  needs: ["terraform plan", "terraform apply"]
   script:
     - terraform destroy -input=false -auto-approve
