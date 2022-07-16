@@ -3,6 +3,7 @@ stages:
   - Build
   - Package
   - Publish
+  - Deploy
 
 variables:
   # Globel level variables. (Will be applied to all jobs)
@@ -82,7 +83,8 @@ Push to ECR:
   after_script:
     - docker logout
 
-.Deploy Terraform Stack:
+Deploy Terraform Stack:
+  stage: Deploy
   trigger:
     include:
       - local: .gitlab/tf-deploy.yml
