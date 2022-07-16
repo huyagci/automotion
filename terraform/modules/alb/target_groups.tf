@@ -5,4 +5,15 @@ resource "aws_lb_target_group" "alb_tg" {
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = var.VPC_ID
+
+  health_check {
+    enabled             = true
+    path                = "/"
+    port                = "traffic-port"
+    interval            = 60
+    timeout             = 5
+    matcher             = 200
+    healthy_threshold   = 5
+    unhealthy_threshold = 5
+  }
 }

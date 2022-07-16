@@ -18,7 +18,6 @@ resource "aws_ecs_task_definition" "task_definition" {
       image     = "public.ecr.aws/n9s8n8z4/protein-app"
       essential = true
 
-
       portMappings = [
         {
           containerPort = 80
