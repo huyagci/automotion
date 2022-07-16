@@ -19,3 +19,5 @@ variable "PRIVATE_SUBNET_CIDR" {
 variable "AZ_COUNT" {
   default = "3"
 }
+
+variable "AWS_SELECTED_REGION" {}
