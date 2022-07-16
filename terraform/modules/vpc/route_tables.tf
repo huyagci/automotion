@@ -1,6 +1,6 @@
 # Subnets
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
-resource "aws_route_table" "public_rt" {
+resource "aws_route_table" "public_rtb" {
   vpc_id = aws_vpc.vpc.id
 
   route {
@@ -9,15 +9,46 @@ resource "aws_route_table" "public_rt" {
   }
 
   tags = {
-    Name = "p-app-rt-public"
+    Name = "p-app-rtb-public"
   }
 }
 
-resource "aws_route_table" "private_rt" {
+resource "aws_route_table" "private_rtb_1a" {
   vpc_id = aws_vpc.vpc.id
 
+  route {
+    cidr_block     = aws_subnet.private_subnet_1a.cidr_block
+    nat_gateway_id = aws_nat_gateway.ngw_1a.id
+  }
+
   tags = {
-    Name = "p-app-rt-private"
+    Name = "p-app-rtb-private-1a"
+  }
+}
+
+resource "aws_route_table" "private_rtb_1b" {
+  vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block     = aws_subnet.private_subnet_1b.cidr_block
+    nat_gateway_id = aws_nat_gateway.ngw_1b.id
+  }
+
+  tags = {
+    Name = "p-app-rtb-private-1b"
+  }
+}
+
+resource "aws_route_table" "private_rtb_1c" {
+  vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block     = aws_subnet.private_subnet_1c.cidr_block
+    nat_gateway_id = aws_nat_gateway.ngw_1c.id
+  }
+
+  tags = {
+    Name = "p-app-rtb-private-1c"
   }
 }
 
@@ -25,29 +56,29 @@ resource "aws_route_table" "private_rt" {
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
 resource "aws_route_table_association" "public_1a" {
   subnet_id      = aws_subnet.public_subnet_1a.id
-  route_table_id = aws_route_table.public_rt.id
+  route_table_id = aws_route_table.public_rtb.id
 }
 
 resource "aws_route_table_association" "public_1b" {
   subnet_id      = aws_subnet.public_subnet_1b.id
-  route_table_id = aws_route_table.public_rt.id
+  route_table_id = aws_route_table.public_rtb.id
 }
 
 resource "aws_route_table_association" "public_1c" {
   subnet_id      = aws_subnet.public_subnet_1c.id
-  route_table_id = aws_route_table.public_rt.id
+  route_table_id = aws_route_table.public_rtb.id
 }
 
 resource "aws_route_table_association" "private_1a" {
   subnet_id      = aws_subnet.private_subnet_1a.id
-  route_table_id = aws_route_table.private_rt.id
+  route_table_id = aws_route_table.private_rtb_1a.id
 }
 
 resource "aws_route_table_association" "private_1b" {
   subnet_id      = aws_subnet.private_subnet_1b.id
-  route_table_id = aws_route_table.private_rt.id
+  route_table_id = aws_route_table.private_rtb_1b.id
 }
 resource "aws_route_table_association" "private_1c" {
   subnet_id      = aws_subnet.private_subnet_1c.id
-  route_table_id = aws_route_table.private_rt.id
+  route_table_id = aws_route_table.private_rtb_1c.id
 }
