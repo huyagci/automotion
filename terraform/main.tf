@@ -21,7 +21,6 @@ provider "aws" {
 module "alb" {
   source = "./modules/alb"
 
-  CLUSTER_ID       = module.ecs.CLUSTER_ID
   VPC_ID           = module.vpc.VPC_ID
   ALB_SG_ID        = module.security.ALB_SG_ID
   PUBLIC_SUBNET_1A = module.vpc.PUBLIC_SUBNET_1A

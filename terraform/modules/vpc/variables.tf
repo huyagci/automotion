@@ -1,3 +1,10 @@
+variable "AWS_SELECTED_REGION" {}
+
+# Unused
+variable "AZ_COUNT" {
+  default = "3"
+}
+
 variable "VPC_CIDR" {
   description = "Default CIDR block for the VPC"
   type        = string
@@ -15,9 +22,3 @@ variable "PRIVATE_SUBNET_CIDR" {
   description = "Default CIDR block for Private Subnets"
   default     = "10.0.1.0/28"
 }
-
-variable "AZ_COUNT" {
-  default = "3"
-}
-
-variable "AWS_SELECTED_REGION" {}
