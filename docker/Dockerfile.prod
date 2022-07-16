@@ -15,8 +15,13 @@ LABEL org.opencontainers.image.description="Simple React application customized 
 # The working directory of the container. (Nginx Web server default location)
 WORKDIR /usr/share/nginx/html
 
-# Copy the contents of build/ directory to the working directory.
-COPY ./app/build/ .
+# # # Copy the contents of build/ directory to the working directory.
+# # Uncomment and use this on your local image builds.
+# COPY ./app/build/ .
+
+# # To be used in Gitlab CI/CD. (Parent directories are removed in artifact archive)
+# Check gitlab-ci.yml > Compile Job > after_script & artifacts > paths
+COPY ./build .
 
 # Expose container port 80 for HTTP access. (Default web port)
 EXPOSE 80
