@@ -1,4 +1,22 @@
+#The latest Nginx release on the latest Alpine base image is selected due to its small size as a web server container.
+# Nginx 1.22 (Stable Version) - Alpine 3.16 (Stable Version)
 FROM nginx:stable-alpine
+
+# Pre-defined annotation keys of OCI (Open Container Initiative) are used since these are more widely recognized metadata keys.
+# https://github.com/opencontainers/image-spec/blob/main/annotations.md
+LABEL org.opencontainers.image.created="2022-07-04"
+LABEL org.opencontainers.image.authors="hasanumutyagci@gmail.com"
+LABEL org.opencontainers.image.url=""
+LABEL org.opencontainers.image.source=""
+LABEL org.opencontainers.image.vendor="Hasan Umut Yagci"
+LABEL org.opencontainers.image.title="Protein App"
+LABEL org.opencontainers.image.description="Simple React application customized for Protein DevOps Bootcamp Final Project"
+
+# The working directory of the container. (Nginx Web server default location)
 WORKDIR /usr/share/nginx/html
-COPY app/build/ .
+
+# Copy the contents of build/ directory to the working directory.
+COPY ./app/build/ .
+
+# Expose container port 80 for HTTP access. (Default web port)
 EXPOSE 80
