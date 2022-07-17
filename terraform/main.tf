@@ -47,14 +47,20 @@ module "autoscaling" {
   ECS_APP_AUTO_SCALE_SL_ROLE_ARN = module.iam.ECS_APP_AUTO_SCALE_SL_ROLE_ARN
 }
 
-# module "cloudwatch" {
-#   source = "./modules/cloudwatch"
+module "cloudwatch" {
+  source = "./modules/cloudwatch"
 
-#   ECS_CLUSTER_NAME     = module.ecs.ECS_CLUSTER_NAME
-#   ECS_SERVICE_NAME     = module.ecs.ECS_SERVICE_NAME
-#   SCALE_OUT_POLICY_ARN = module.autoscaling.SCALE_OUT_POLICY_ARN
-#   SCALE_IN_POLICY_ARN  = module.autoscaling.SCALE_IN_POLICY_ARN
-# }
+  HIGH_CPU_THRESHOLD = "50"
+  LOW_CPU_THRESHOLD  = "20"
+
+  ENABLE_AUTOSCALE_OUT = true
+  ENABLE_AUTOSCALE_IN  = true
+
+  ECS_CLUSTER_NAME     = module.ecs.ECS_CLUSTER_NAME
+  ECS_SERVICE_NAME     = module.ecs.ECS_SERVICE_NAME
+  SCALE_OUT_POLICY_ARN = module.autoscaling.SCALE_OUT_POLICY_ARN
+  SCALE_IN_POLICY_ARN  = module.autoscaling.SCALE_IN_POLICY_ARN
+}
 
 # # Initial creation of remote backend state storage
 # module "dynamodb" {
