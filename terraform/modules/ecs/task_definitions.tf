@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "task_definition" {
   container_definitions = jsonencode([
     {
       name      = "protein-app"
-      image     = "public.ecr.aws/n9s8n8z4/protein-app"
+      image     = "590332698226.dkr.ecr.eu-central-1.amazonaws.com/protein-app"
       essential = true
 
       portMappings = [
