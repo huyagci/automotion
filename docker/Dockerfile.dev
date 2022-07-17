@@ -14,7 +14,7 @@ LABEL org.opencontainers.image.description="React development environment contai
 WORKDIR /tmp/protein-app
 
 # Copy the contents of the app/ directory to working directory.
-COPY app/ .
+COPY ./docker/app .
 
 # Run "npm clean-install" command including devDependecies.
 RUN npm ci --include=dev

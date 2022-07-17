@@ -23,4 +23,4 @@ jobs:
         run: docker build . -f docker/Dockerfile.dev -t $DOCKERHUB_USERNAME/$DOCKERHUB_REPO:development
 
       - name: Docker Push
-        run: docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPO
+        run: docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPO:development
