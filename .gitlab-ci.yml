@@ -68,7 +68,7 @@ Push to ECR:
     - docker:dind
   variables:
     SOURCE_IMAGE: $CI_REGISTRY_IMAGE/$IMAGE_NAME:$CI_COMMIT_SHORT_SHA
-    RELEASE_IMAGE: $ECR_REPOSITORY/$IMAGE_NAME
+    RELEASE_IMAGE: $AWS_ECR_REPOSITORY/$IMAGE_NAME
   dependencies:
     - Containerize
   before_script:
