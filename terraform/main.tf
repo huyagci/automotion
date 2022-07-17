@@ -39,6 +39,23 @@ module "alb" {
   PUBLIC_SUBNET_1C = module.vpc.PUBLIC_SUBNET_1C
 }
 
+module "autoscaling" {
+  source = "./modules/autoscaling"
+
+  ECS_CLUSTER_NAME               = module.ecs.ECS_CLUSTER_NAME
+  ECS_SERVICE_NAME               = module.ecs.ECS_SERVICE_NAME
+  ECS_APP_AUTO_SCALE_SL_ROLE_ARN = module.iam.ECS_APP_AUTO_SCALE_SL_ROLE_ARN
+}
+
+module "cloudwatch" {
+  source = "./modules/cloudwatch"
+
+  ECS_CLUSTER_NAME     = module.ecs.ECS_CLUSTER_NAME
+  ECS_SERVICE_NAME     = module.ecs.ECS_SERVICE_NAME
+  SCALE_OUT_POLICY_ARN = module.autoscaling.SCALE_OUT_POLICY_ARN
+  SCALE_IN_POLICY_ARN  = module.autoscaling.SCALE_IN_POLICY_ARN
+}
+
 # # Initial creation of remote backend state storage
 # module "dynamodb" {
 #   source = "./modules/dynamodb"
