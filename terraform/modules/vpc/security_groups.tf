@@ -18,6 +18,8 @@ resource "aws_security_group" "alb_sg" {
     cidr_blocks      = [var.IPV4_CIDR_BLOCK]
     ipv6_cidr_blocks = [var.IPV6_CIDR_BLOCK]
   }
+
+  depends_on = [aws_vpc.vpc]
 }
 
 resource "aws_security_group" "ecs_sg" {
@@ -38,4 +40,6 @@ resource "aws_security_group" "ecs_sg" {
     cidr_blocks      = [var.IPV4_CIDR_BLOCK]
     ipv6_cidr_blocks = [var.IPV6_CIDR_BLOCK]
   }
+
+  depends_on = [aws_vpc.vpc]
 }

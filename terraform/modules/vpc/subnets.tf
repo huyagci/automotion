@@ -7,6 +7,8 @@ resource "aws_subnet" "public_subnet_1a" {
   tags = {
     Name = "p-app-public-subnet-1a"
   }
+
+  depends_on = [aws_vpc.vpc]
 }
 
 resource "aws_subnet" "public_subnet_1b" {
@@ -17,6 +19,8 @@ resource "aws_subnet" "public_subnet_1b" {
   tags = {
     Name = "p-app-public-subnet-1b"
   }
+
+  depends_on = [aws_vpc.vpc]
 }
 
 resource "aws_subnet" "public_subnet_1c" {
@@ -27,6 +31,8 @@ resource "aws_subnet" "public_subnet_1c" {
   tags = {
     Name = "p-app-public-subnet-1c"
   }
+
+  depends_on = [aws_vpc.vpc]
 }
 
 resource "aws_subnet" "private_subnet_1a" {
@@ -37,6 +43,8 @@ resource "aws_subnet" "private_subnet_1a" {
   tags = {
     Name = "p-app-private-subnet-1a"
   }
+
+  depends_on = [aws_vpc.vpc]
 }
 
 resource "aws_subnet" "private_subnet_1b" {
@@ -47,6 +55,8 @@ resource "aws_subnet" "private_subnet_1b" {
   tags = {
     Name = "p-app-private-subnet-1b"
   }
+
+  depends_on = [aws_vpc.vpc]
 }
 
 resource "aws_subnet" "private_subnet_1c" {
@@ -57,4 +67,6 @@ resource "aws_subnet" "private_subnet_1c" {
   tags = {
     Name = "p-app-private-subnet-1c"
   }
+
+  depends_on = [aws_vpc.vpc]
 }

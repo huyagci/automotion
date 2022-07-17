@@ -6,6 +6,8 @@ resource "aws_nat_gateway" "ngw_1a" {
   tags = {
     Name = "p-app-ngw-1a"
   }
+
+  depends_on = [aws_eip.eip_1a, aws_subnet.private_subnet_1a]
 }
 
 resource "aws_nat_gateway" "ngw_1b" {
@@ -16,6 +18,8 @@ resource "aws_nat_gateway" "ngw_1b" {
   tags = {
     Name = "p-app-ngw-1b"
   }
+
+  depends_on = [aws_eip.eip_1b, aws_subnet.private_subnet_1b]
 }
 
 resource "aws_nat_gateway" "ngw_1c" {
@@ -26,4 +30,6 @@ resource "aws_nat_gateway" "ngw_1c" {
   tags = {
     Name = "p-app-ngw-1c"
   }
+
+  depends_on = [aws_eip.eip_1c, aws_subnet.private_subnet_1c]
 }

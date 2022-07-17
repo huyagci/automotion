@@ -11,6 +11,8 @@ resource "aws_route_table" "public_rtb" {
   tags = {
     Name = "p-app-rtb-public"
   }
+
+  depends_on = [aws_vpc.vpc, aws_internet_gateway.igw]
 }
 
 resource "aws_route_table" "private_rtb_1a" {
@@ -24,6 +26,8 @@ resource "aws_route_table" "private_rtb_1a" {
   tags = {
     Name = "p-app-rtb-private-1a"
   }
+
+  depends_on = [aws_vpc.vpc, aws_subnet.private_subnet_1a, aws_nat_gateway.ngw_1a]
 }
 
 resource "aws_route_table" "private_rtb_1b" {
@@ -37,6 +41,8 @@ resource "aws_route_table" "private_rtb_1b" {
   tags = {
     Name = "p-app-rtb-private-1b"
   }
+
+  depends_on = [aws_vpc.vpc, aws_subnet.private_subnet_1b, aws_nat_gateway.ngw_1b]
 }
 
 resource "aws_route_table" "private_rtb_1c" {
@@ -50,6 +56,8 @@ resource "aws_route_table" "private_rtb_1c" {
   tags = {
     Name = "p-app-rtb-private-1c"
   }
+
+  depends_on = [aws_vpc.vpc, aws_subnet.private_subnet_1c, aws_nat_gateway.ngw_1c]
 }
 
 # Route Table Associations
