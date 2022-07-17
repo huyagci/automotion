@@ -78,7 +78,7 @@ Push to ECR:
     - docker tag $SOURCE_IMAGE $RELEASE_IMAGE:$CI_COMMIT_SHORT_SHA
     - docker tag $SOURCE_IMAGE $RELEASE_IMAGE:latest
   script:
-    - aws ecr-public get-login-password | docker login $AWS_ECR_REPOSITORY --username AWS --password-stdin
+    - aws ecr get-login-password | docker login $AWS_ECR_REPOSITORY --username AWS --password-stdin
     - docker push -a $RELEASE_IMAGE
   after_script:
     - docker logout
