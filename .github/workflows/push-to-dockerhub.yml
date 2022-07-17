@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  dockerize-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +15,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
         run: |
-          docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_TOKEN}
+          echo ${DOCKERHUB_TOKEN} | docker login -u ${DOCKERHUB_USERNAME} --password-stdin
 
       - name: Docker Build
         run: docker build . -f Dockerfile.dev -t huyagci/react-app:latest

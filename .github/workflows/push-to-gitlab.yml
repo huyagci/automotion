@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  push-to-gitlab:
+  mirror-to-gitlab:
     runs-on: self-hosted
 
     steps:
@@ -32,7 +32,7 @@ jobs:
           GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
           GITLAB_URL: ${{ secrets.GITLAB_REPO_URL }}
         run: |
-          git config remote.gitlab.url >&- || git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@${GITLAB_URL}"
+          git remote set-url gitlab "https://oauth2:${GITLAB_TOKEN}@${GITLAB_URL}"
 
       - name: Push dev branch to Gitlab
         if: github.ref == 'refs/heads/dev'
