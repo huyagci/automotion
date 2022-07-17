@@ -25,3 +25,11 @@ output "PRIVATE_SUBNET_1B" {
 output "PRIVATE_SUBNET_1C" {
   value = aws_subnet.public_subnet_1c.id
 }
+
+output "ALB_SG_ID" {
+  value = aws_security_group.alb_sg.id
+}
+
+output "ECS_SG_ID" {
+  value = aws_security_group.ecs_sg.id
+}

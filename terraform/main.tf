@@ -22,17 +22,18 @@ module "alb" {
   source = "./modules/alb"
 
   VPC_ID           = module.vpc.VPC_ID
-  ALB_SG_ID        = module.security.ALB_SG_ID
+  ALB_SG_ID        = module.vpc.ALB_SG_ID
   PUBLIC_SUBNET_1A = module.vpc.PUBLIC_SUBNET_1A
   PUBLIC_SUBNET_1B = module.vpc.PUBLIC_SUBNET_1B
   PUBLIC_SUBNET_1C = module.vpc.PUBLIC_SUBNET_1C
 }
 
-# Initial creation of remote backend state storage and lock
+# Initial creation of remote backend state storage
 # module "dynamodb" {
 #   source = "./modules/dynamodb"
 # }
 
+# Initial creation of remote backend state lock
 # module "s3" {
 #   source = "./modules/s3"
 # }
@@ -40,10 +41,10 @@ module "alb" {
 module "ecs" {
   source = "./modules/ecs"
 
-  ECS_SG_ID              = module.security.ECS_SG_ID
   ECS_TASK_EXEC_ROLE_ARN = module.iam.ECS_TASK_EXEC_ROLE_ARN
   ALB_LISTENER           = module.alb.ALB_LISTENER
   TARGET_GROUP_ARN       = module.alb.TARGET_GROUP_ARN
+  ECS_SG_ID              = module.vpc.ECS_SG_ID
   PRIVATE_SUBNET_1A      = module.vpc.PRIVATE_SUBNET_1A
   PRIVATE_SUBNET_1B      = module.vpc.PRIVATE_SUBNET_1B
   PRIVATE_SUBNET_1C      = module.vpc.PRIVATE_SUBNET_1C
@@ -51,12 +52,6 @@ module "ecs" {
 
 module "iam" {
   source = "./modules/iam"
-}
-
-module "security" {
-  source = "./modules/security"
-
-  VPC_ID = module.vpc.VPC_ID
 }
 
 module "vpc" {
