@@ -1,4 +1,7 @@
 terraform {
+
+  required_version = ">= 0.13"
+
   backend "s3" {
     bucket         = "papp-tf-state-bucket"
     key            = "state/terraform.tfstate"
@@ -6,16 +9,24 @@ terraform {
     dynamodb_table = "tf-state-lock"
     encrypt        = true
   }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = ">= 4.22"
     }
   }
 }
 
 provider "aws" {
   region = var.AWS_SELECTED_REGION
+
+  default_tags {
+    tags = {
+      CreatedBy   = "Terraform"
+      Environment = "Production"
+    }
+  }
 }
 
 module "alb" {
@@ -28,14 +39,19 @@ module "alb" {
   PUBLIC_SUBNET_1C = module.vpc.PUBLIC_SUBNET_1C
 }
 
-# Initial creation of remote backend state storage
+# # Initial creation of remote backend state storage
 # module "dynamodb" {
 #   source = "./modules/dynamodb"
 # }
 
-# Initial creation of remote backend state lock
+# # Initial creation of remote backend state lock
 # module "s3" {
 #   source = "./modules/s3"
+# }
+
+# # Bootstrapping ECR Private Repository
+# module "ecr" {
+#   source = "./modules/ecr"
 # }
 
 module "ecs" {
