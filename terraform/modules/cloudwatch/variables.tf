@@ -13,3 +13,5 @@ variable "LOW_CPU_THRESHOLD" {}
 variable "ENABLE_AUTOSCALE_OUT" {}
 
 variable "ENABLE_AUTOSCALE_IN" {}
+
+variable "AWS_SELECTED_REGION" {}
