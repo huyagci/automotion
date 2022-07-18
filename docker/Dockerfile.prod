@@ -6,8 +6,8 @@ FROM nginx:stable-alpine
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
 LABEL org.opencontainers.image.created="2022-07-04"
 LABEL org.opencontainers.image.authors="hasanumutyagci@gmail.com"
-LABEL org.opencontainers.image.url=""
-LABEL org.opencontainers.image.source=""
+LABEL org.opencontainers.image.url="https://github.com/huyagci/bootcamp-final-project"
+LABEL org.opencontainers.image.source="https://github.com/huyagci/bootcamp-final-project/tree/main/docker/app"
 LABEL org.opencontainers.image.vendor="Hasan Umut Yagci"
 LABEL org.opencontainers.image.title="Protein App"
 LABEL org.opencontainers.image.description="Simple React application customized for Protein DevOps Bootcamp Final Project"
