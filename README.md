@@ -19,7 +19,8 @@ If you are looking for something specific, check out the [directory content](#op
    - [Optional Tasks](#asterisk-optional-tasks)
 2. [Overview](#notebookwithdecorativecover-overview)
 3. [Featured](#sparkles-featured)
-4. [AWS Infrastructure]
+4. [AWS Infrastructure](#electricplug-aws-infrastructure)
+   - [Visualization](#visualization)
 5. [Directory Content](#openfilefolder-directory-content)
 
 #### :hash: **Assignment**
@@ -49,10 +50,6 @@ If you are looking for something specific, check out the [directory content](#op
 
 The project presents an example of a fully automated DevOps CI/CD cycle with the ability to deploy on AWS infrastructure. Check out the featured section for a quick preview of the project features.
 
-&nbsp;
-
-<p align="center"><img src="./assets/img/automotion.png" alt="Project branding image"></a></p>
-
 ### :sparkles: **Featured**
 
 > - Simple React application dockerized with the smallest image size. (~ 24 MB)
@@ -68,16 +65,32 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 > - Auxilary shell scripts and k8s deployment manifests.
 > - Vagrantfile to easier build a VM test environment for shell scripts.
 
-### :smthn: **AWS Infrastructure**
+### :electric_plug: **AWS Infrastructure**
 
-### DRAW.IO HERE
+**_Used Services;_**
+
+![IAM](./assets/icons/iam.svg)
+![AWS Budgets](./assets/icons/budgets.svg)
+![S3](./assets/icons/s3.svg)
+![DynamoDB](./assets/icons/dynamodb.svg)
+![VPC](./assets/icons/vpc.svg)
+![ELB](./assets/icons/elb.svg)
+![ECS](./assets/icons/ecs.svg)
+![ECR](./assets/icons/ecr.svg)
+![Fargate](./assets/icons/fargate.svg)
+![Application Auto Scaling](./assets/icons/appautoscaling.svg)
+![Cloudwatch](./assets/icons/cloudwatch.svg)
+
+##### _Visualization_
+
+![AWS Infrastructure](./assets/img/aws_infra.svg)
 
 ### :open_file_folder: **Directory Content**
 
 ```
-/           : Gitlab CI/CD main pipeline manifest.
+/           : Gitlab CI/CD parent pipeline manifest.
 .github/    : Github Actions workflow manifets, issue and pull request templates.
-.gitlab/    : Gitlab CI/CD child pipeline manifest (Terraform deployment), self-hosted runner configuration.
+.gitlab/    : Terraform deployment manifest, self-hosted runner configuration.
 ansible/    : Simple shell script for checking the disk usage and sending email alerts.
 assets/     : AWS infrastucture diagram draw.io export.
 docker/     : React application, Dockerfiles for production and development environments.
