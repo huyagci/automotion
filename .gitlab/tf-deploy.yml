@@ -1,3 +1,4 @@
+# There are three visible stages on this pipeline. The hidden stage is explained below.
 stages:
   - Plan
   - Apply
@@ -6,21 +7,26 @@ stages:
 variables:
   TF_ROOT: $CI_PROJECT_DIR/terraform
 
+# This stage is hidden in the pipeline. Since every next stage will use the same image their configurations are extended to this stage.
+# Since running "fmt" and "init" commands before "plan" and "apply" commands is one of the best practices, "before_script" step will be passed to every stage extends to this one,
 .config:
   image:
-    name: hashicorp/terraform:light #same as latest
+    # Currently same in size as the "latest" image.
+    name: hashicorp/terraform:light
     entrypoint: [""]
     pull_policy: if-not-present
   before_script:
     - cd $TF_ROOT
     - terraform fmt
-    - terraform init -input=false #--backend-config="access_key=$AWS_ACCESS_KEY" -backend-config="secret_key=$AWS_SECRET_KEY"
+    # -input=false eliminates the user input so that commands will not prompt the user.
+    - terraform init -input=false
 
 terraform plan:
   extends: .config
   stage: Plan
   script:
     - terraform plan -out aws.tfplan -input=false
+  # Current plan will be saved and passed on between stages as an artifact.
   artifacts:
     when: on_success
     name: terraform-plan
@@ -28,6 +34,8 @@ terraform plan:
       - $TF_ROOT/aws.tfplan
     expire_in: 1 hrs
 
+# While previous jobs are automated, apply and destroy jobs are should be triggered manually.
+# These stages should be kept on manual since they might produce unwanted costs and configurations.
 terraform apply:
   extends: .config
   when: manual
@@ -35,12 +43,14 @@ terraform apply:
   dependencies:
     - terraform plan
   script:
+    # -auto-approve flag is added to fully automate this stage.
     - terraform apply aws.tfplan -input=false -auto-approve
 
 terraform destroy:
   extends: .config
   stage: Destroy
   when: manual
+  # This stage can only be triggered if the "plan" and "apply" stages are run previously in the same pipeline.
   needs: ["terraform plan", "terraform apply"]
   script:
     - terraform destroy -input=false -auto-approve

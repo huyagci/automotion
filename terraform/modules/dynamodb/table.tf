@@ -1,3 +1,6 @@
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table
+
+# Required for terraform state locking.
 resource "aws_dynamodb_table" "dynamodb_table" {
   name = "tf-state-lock"
   # PAY_PER REQUEST is not free tier eligible. Default is PROVISIONED.

@@ -1,3 +1,4 @@
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/nat_gateway
 resource "aws_nat_gateway" "ngw_1a" {
   allocation_id     = aws_eip.eip_1a.allocation_id
   connectivity_type = "public"
