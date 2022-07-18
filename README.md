@@ -15,13 +15,13 @@ If you are looking for something specific, check out the [directory content](#op
 ### :open_book: **Table of Contents**
 
 1. [Assignment](#hash-assignment)
-   - [Essential Tasks](#ballotboxwithcheck-essential-tasks)
+   - [Essential Tasks](#ballot_box_with_check-essential-tasks)
    - [Optional Tasks](#asterisk-optional-tasks)
-2. [Overview](#notebookwithdecorativecover-overview)
+2. [Overview](#notebook_with_decorative_cover-overview)
 3. [Featured](#sparkles-featured)
-4. [AWS Infrastructure](#electricplug-aws-infrastructure)
-   - [Visualization](#infrastructure-visualization)
-5. [Directory Content](#openfilefolder-directory-content)
+4. [AWS Infrastructure](#electric_plug-aws-infrastructure)
+   - [Infrastructure Visualization](#infrastructure-visualization)
+5. [Directory Content](#open_file_folder-directory-content)
 
 #### :hash: **Assignment**
 
