@@ -1,23 +1,23 @@
-# List of stages for jobs, and their order of execution
+# Stage list for all jobs defined. In the order of execution.
 stages:
   - Build
   - Package
   - Publish
   - Deploy
 
+# Global level variables. (Will be applied to all jobs)
 variables:
-  # Globel level variables. (Will be applied to all jobs)
   IMAGE_NAME:
     value: "protein-app"
-    description: "App name"
+    description: "Application name."
 
   DOCKER_HOST:
     value: "tcp://docker:2375"
-    description: "To be used in Dind confs"
+    description: "For Docker daemon connections in docker-in-docker jobs."
 
   DOCKER_TLS_CERTDIR:
     value: ""
-    description: "Ignore tls cert"
+    description: "Disable TLS certificates."
 
 Compile:
   stage: Build
@@ -27,9 +27,10 @@ Compile:
   before_script:
     - cd ./docker/app
   script:
+    # Npm clean install without devDependencies.
     - npm ci --only=prod
     - npm run build
-  # Remove parent directories so that artifact archive will contain only the base directory.
+  # Remove parent directories so that the artifact archive will contain only the base directory.
   after_script:
     - mv ./docker/app/build ./build
   artifacts:
@@ -43,25 +44,31 @@ Compile:
 Containerize:
   stage: Package
   image:
-    name: docker:20.10.17-alpine3.16 # currently same size as "docker:latest" latest docker
+    # This image is currently same size as "docker:latest" image.
+    name: docker:20.10.17-alpine3.16
     pull_policy: if-not-present
   services:
+    # Since my self-hosted runner executor is Docker, I need "d-in-d" service to execute the Docker commands.
     - docker:dind
   dependencies:
     - Compile
   before_script:
     - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
+    # Tag the image with commit hash and latest image. This command will produce one image with two tags.
     - docker build -f docker/Dockerfile.prod --cache-from $CI_REGISTRY_IMAGE/$IMAGE_NAME:latest -t $CI_REGISTRY_IMAGE/$IMAGE_NAME:$CI_COMMIT_SHORT_SHA -t $CI_REGISTRY_IMAGE/$IMAGE_NAME:latest .
+    # Push image to the Gitlab Container Registry for later uses.
     - docker push -a $CI_REGISTRY_IMAGE/$IMAGE_NAME
   after_script:
     - docker logout
 
+# This job requires either aws-cli installed on a docker image or docker installed on an aws-cli image.
+# Since Docker installation is available in the Amazon Linux Extras library I find this setup bit easier.
 Push to ECR:
   stage: Publish
   image:
     name: amazon/aws-cli:latest
-    # Unset default entrypoint of the image which is "aws"
+    # Unset the default "aws" entrypoint of the image to prevent future errors.
     entrypoint: [""]
     pull_policy: if-not-present
   services:
@@ -75,14 +82,20 @@ Push to ECR:
     - amazon-linux-extras install docker
     - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
     - docker pull $SOURCE_IMAGE
+    # Docker tag command does not support multiple tagging like the "build" command. To create multiple tags, the command should be run multiple times.
     - docker tag $SOURCE_IMAGE $RELEASE_IMAGE:$CI_COMMIT_SHORT_SHA
     - docker tag $SOURCE_IMAGE $RELEASE_IMAGE:latest
   script:
     - aws ecr get-login-password | docker login $AWS_ECR_REPOSITORY --username AWS --password-stdin
+
+    # There is an ECR policy defined in the AWS repository which will remove all untagged images except one.
+    # Consecutive pushes will create multiple untagged images since every push will contain an image with the "latest" tag.
+    # ECR policy will keep the repository clean and utilize minimum space.
     - docker push -a $RELEASE_IMAGE
   after_script:
     - docker logout
 
+# Terraform deployment is separated to a child pipeline which will be triggered from here.
 Deploy Terraform Stack:
   stage: Deploy
   trigger:
