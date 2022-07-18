@@ -55,12 +55,11 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 > - Simple React application dockerized with the smallest image size. (~ 24 MB)
 > - Terraform stack that is built with module composition to fully utilize AWS capabilities.
 > - AWS infrastructure that implements most of the security measures and best practices.
-> - Automated CI/CD main pipeline on Gitlab.
-> - Simple workflow on Github to mirror this repository to Gitlab. (Also produces another Docker Image to Docker Hub for the demonstrative purposes)
+> - Automated CI/CD main [pipeline][@gl-cicd] on Gitlab.
+> - Simple [workflow][@gh-actions] on Github to mirror this repository to Gitlab. (Also produces another Docker Image to Docker Hub for the demonstrative purposes)
 > - Both pipelines are working on self-hosted runners.
-> - Example project board to demonstrate Scrum framework by using Github Projects & Issues.
-> - YAML templates for issues and pull requests for making data inputs easier.
-> - Both pipelines are working on self-hosted runners.
+> - Example [project board][@project] to demonstrate Scrum framework by using Github Projects & [Issues][@issues].
+> - YAML [templates][@templates] for issues and pull requests for making data inputs easier.
 > - Both pipelines are working on self-hosted runners.
 > - Auxilary shell scripts and k8s deployment manifests.
 > - Vagrantfile to easier build a VM test environment for shell scripts.
@@ -133,6 +132,11 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 
 <!-- URL Index -->
 
+[@project]: https://github.com/huyagci/bootcamp-final-project/projects/1
+[@issues]: https://github.com/huyagci/bootcamp-final-project/issues?q=is%3Aissue+is%3Aclosed
+[@gh-actions]: https://github.com/huyagci/bootcamp-final-project/actions
+[@gl-cicd]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
+[@templates]: https://github.com/huyagci/bootcamp-final-project/issues/new
 [@patika]: https://www.patika.dev/
 [@protein]: https://protein.tech/
 [@linux]: https://www.linux.org/
