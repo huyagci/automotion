@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: protein-app-deployment
+  namespace: production
+  labels:
+    app: protein-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: protein-app
+  template:
+    metadata:
+      labels:
+        app: protein-app
+    spec:
+      containers:
+        - name: p-app-prod
+          image: huyagci/protein-app:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
