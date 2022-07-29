@@ -150,11 +150,6 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [@kubernetes]: https://kubernetes.io/
 
 <!-- AWS Index -->
-
-<!-- Diagram -->
-
-[@drawio]: ./assets/img/aws_infra.svg
-
 <!-- Icons -->
 
 [#aas]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/appautoscaling.svg
@@ -182,3 +177,7 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [@fargate]: https://aws.amazon.com/fargate/
 [@aas]: https://aws.amazon.com/autoscaling/
 [@cloudwatch]: https://aws.amazon.com/cloudwatch/
+
+<!-- Diagram -->
+
+[@drawio]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/aws_infra.svg
