@@ -23,7 +23,7 @@ If you are looking for something specific, check out the [directory content](#op
    - [Infrastructure Visualization](#infrastructure-visualization)
 5. [Directory Content](#open_file_folder-directory-content-)
 
-### :hash: **Assignment** [🔝](#open_book-table-of-contents)
+### :hash: **Assignment** [🔝][@jump-to-top]
 
 > Fully cover the DevOps cycle and create a full-on CI/CD and cloud infrastructure.
 
@@ -46,13 +46,13 @@ If you are looking for something specific, check out the [directory content](#op
 > 4. Configure a self-hosted runner on Gitlab and share its configuration with the implementation steps.
 > 5. Create a script that sends an email if the disk usage of the system exceeds 90% in the OS.
 
-### :notebook_with_decorative_cover: **Overview** [🔝](#open_book-table-of-contents)
+### :notebook_with_decorative_cover: **Overview** [🔝][@jump-to-top]
 
 The project presents an example of a fully automated DevOps CI/CD cycle with the ability to deploy on AWS infrastructure. Check out the featured section for a quick preview of the project features.
 
 <p align="center"><img src="./assets/img/automotion.png" alt="Project Branding Image"></a></p>
 
-### :sparkles: **Featured** [🔝](#open_book-table-of-contents)
+### :sparkles: **Featured** [🔝][@jump-to-top]
 
 > - Simple React application dockerized with the smallest image size. (~ 24 MB)
 > - Terraform stack that is built with module composition to fully utilize AWS capabilities.
@@ -66,7 +66,7 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 > - Auxilary shell scripts and k8s deployment manifests.
 > - Vagrantfile to easier build a VM test environment for shell scripts.
 
-### :electric_plug: **AWS Infrastructure** [🔝](#open_book-table-of-contents)
+### :electric_plug: **AWS Infrastructure** [🔝][@jump-to-top]
 
 #### _Used Services;_
 
@@ -88,7 +88,7 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 
 ![AWS Infrastructure Diagram][@drawio]
 
-### :open_file_folder: **Directory Content** [🔝](#open_book-table-of-contents)
+### :open_file_folder: **Directory Content** [🔝][@jump-to-top]
 
 ```
 /           : Gitlab CI/CD parent pipeline manifest.
@@ -121,6 +121,7 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [@gh-actions]: https://github.com/huyagci/bootcamp-final-project/actions
 [@gl-cicd]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
 [@templates]: https://github.com/huyagci/bootcamp-final-project/issues/new/choose
+[@jump-to-top]: #open_book-table-of-contents
 
 <!-- Badge Index -->
 <!-- Images -->
