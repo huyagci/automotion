@@ -4,7 +4,7 @@
 
 **_Built with;_**
 
-[![alpine][#alpine]][@alpine] [![sh][#sh]][@sh] [![Vagrant][#vagrant]][@vagrant] [![gitlab][#gitlab]][@gitlab] [![gh-actions][#gh-actions]][@gh-actions] [![react][#react]][@react] [![docker][#docker]][@docker] [![terraform][#terraform]][@terraform] [![aws][#aws]][@aws] [![kubernetes][#kubernetes]][@kubernetes]
+[![alpine][#alpine]][@alpine] [![sh][#sh]][@sh] [![Vagrant][#vagrant]][@vagrant] [![gitlab][#gitlab]][@gl-pipeline] [![gh-actions][#gh-actions]][@gh-actions] [![react][#react]][@react] [![docker][#docker]][@docker] [![terraform][#terraform]][@terraform] [![aws][#aws]][@aws] [![kubernetes][#kubernetes]][@kubernetes]
 
 ### :notebook: About
 
@@ -60,7 +60,7 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 > - Terraform stack that is built with module composition to fully utilize AWS capabilities.
 > - AWS infrastructure that implements most of the security measures and best practices.
 > - An automated main CI/CD [pipeline][@gl-pipeline] on Gitlab.
-> - Simple [workflow][@gh-actions] on Github to mirror this repository to Gitlab. (Also produces another Docker Image to Docker Hub for the demonstrative purposes)
+> - Simple [workflow][@gh-actions] on Github to mirror this repository to Gitlab. (Also produces another Docker Image to [Docker Hub][@docker-hub] for the demonstrative purposes)
 > - Both pipelines are working on self-hosted runners.
 > - Example [project board][@project-url] to demonstrate Scrum framework by using Github Projects & [Issues][@issues].
 > - YAML [templates][@templates] for issues and pull requests for making data inputs easier.
@@ -70,7 +70,7 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 
 ### :date: **Project Board** [🔝][@jump-to-top]
 
-To demonstrate the Agile framework, a scaled-down Scrum methodology is used to utilize total project time with the most efficiency. Originally, I intended to use Jira Software but due to the timeframe of the project, I decided to use [Github Projects][@project-url]. [Issues][@issues] are utilized as a backlog of the board and the board cards are populated from here. The image below is an example taken in the middle of the project.
+To demonstrate the Agile framework, a scaled-down Scrum methodology is used to utilize total project time with the most efficiency. Originally, I intended to use Jira Software but due to the timeframe of the project, I decided to use [Github Projects][@project-url] and [Issues][@issues] are utilized as a backlog of the board and the board cards are populated from here. The image below is an example taken in the middle of the project.
 
 [![Project Board][#project-board]][@project-url]
 
@@ -82,7 +82,7 @@ Upon finishing the main pipeline, the child pipeline built for Terraform starts 
 
 #### _Gitlab Pipeline;_
 
-![Gitlab Pipeline][#gl-pipeline]
+[![Gitlab Pipeline][#gl-pipeline]][@gl-pipeline]
 
 ### :electric_plug: **AWS Infrastructure** [🔝][@jump-to-top]
 
@@ -170,6 +170,7 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [@issues]: https://github.com/huyagci/bootcamp-final-project/issues?q=is%3Aissue+is%3Aclosed
 [@gh-actions]: https://github.com/huyagci/bootcamp-final-project/actions
 [@gl-pipeline]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
+[@docker-hub]: https://hub.docker.com/r/huyagci/protein-app/tags
 [@templates]: https://github.com/huyagci/bootcamp-final-project/issues/new/choose
 [@jump-to-top]: #open_book-table-of-contents
 
@@ -183,8 +184,6 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [@alpine]: https://www.alpinelinux.org/
 [@sh]: https://www.shellscript.sh/
 [@vagrant]: https://www.vagrantup.com/
-[@gitlab]: https://docs.gitlab.com/ee/ci/
-[@gh-actions]: https://docs.github.com/en/actions
 [@react]: https://reactjs.org/
 [@docker]: https://www.docker.com/
 [@terraform]: https://www.terraform.io/
