@@ -20,9 +20,10 @@ If you are looking for something specific, check out the [directory content](#op
 2. [Overview](#notebook_with_decorative_cover-overview-)
 3. [Featured](#sparkles-featured-)
 4. [Project Board](#date-project-board-)
-5. [AWS Infrastructure](#electric_plug-aws-infrastructure-)
+5. [Project Workflow](#twisted_rightwards_arrows-project-workflow-)
+6. [AWS Infrastructure](#electric_plug-aws-infrastructure-)
    - [Infrastructure Visualization](#infrastructure-visualization)
-6. [Directory Content](#open_file_folder-directory-content-)
+7. [Directory Content](#open_file_folder-directory-content-)
 
 ### :hash: **Assignment** [🔝][@jump-to-top]
 
@@ -58,7 +59,7 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 > - Simple React application dockerized with the smallest image size. (~ 24 MB)
 > - Terraform stack that is built with module composition to fully utilize AWS capabilities.
 > - AWS infrastructure that implements most of the security measures and best practices.
-> - Automated CI/CD main [pipeline][@gl-cicd] on Gitlab.
+> - An automated main CI/CD [pipeline][@gl-pipeline] on Gitlab.
 > - Simple [workflow][@gh-actions] on Github to mirror this repository to Gitlab. (Also produces another Docker Image to Docker Hub for the demonstrative purposes)
 > - Both pipelines are working on self-hosted runners.
 > - Example [project board][@project-url] to demonstrate Scrum framework by using Github Projects & [Issues][@issues].
@@ -73,7 +74,15 @@ To demonstrate the Agile framework, a scaled-down Scrum methodology is used to u
 
 [![Project Board][#project-board]][@project-url]
 
-### :date: **Project Board** [🔝][@jump-to-top]
+### :twisted_rightwards_arrows: **Project Workflow** [🔝][@jump-to-top]
+
+A simple React project is created and used as a sample application. Github is used as an auxiliary repository to dockerize the application's development environment and pushes the Docker image to Docker Hub along with mirroring the entire repository to Gitlab, which is the main repository. After the mirroring to Gitlab, the main pipeline begins building the project as a production environment and containerizing the application with Docker. This image is pushed to Gitlab's and AWS' (ECR) container registries. A self-hosted runner is hosted on both Github's and Gitlab's pipelines to run these pipelines.
+
+Upon finishing the main pipeline, the child pipeline built for Terraform starts initializing process and plans the requested resources from AWS. Developing a reusable code (IaC) to utilize AWS was critical since the project requires many of the AWS main and sub-services. The execution step(Terraform apply) must be triggered manually since automatic execution may cause unwanted outcomes. The project also contains other deployment methods such as Kubernetes and an additional shell script as a part of the assignment.
+
+#### _Gitlab Pipeline;_
+
+![Gitlab Pipeline][#gl-pipeline]
 
 ### :electric_plug: **AWS Infrastructure** [🔝][@jump-to-top]
 
@@ -121,6 +130,7 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 <!-- Project -->
 
 [#project-board]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/project-board.png
+[#gl-pipeline]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/gitlab-pipeline.png
 
 <!-- Badges -->
 
@@ -159,7 +169,7 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [@project-url]: https://github.com/huyagci/bootcamp-final-project/projects/1
 [@issues]: https://github.com/huyagci/bootcamp-final-project/issues?q=is%3Aissue+is%3Aclosed
 [@gh-actions]: https://github.com/huyagci/bootcamp-final-project/actions
-[@gl-cicd]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
+[@gl-pipeline]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
 [@templates]: https://github.com/huyagci/bootcamp-final-project/issues/new/choose
 [@jump-to-top]: #open_book-table-of-contents
 
