@@ -117,24 +117,12 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 
 [^1]: Footnotes here
 
-<!-- URL Index -->
-<!-- External -->
-
-[@patika]: https://www.patika.dev/
-[@protein]: https://protein.tech/
-
+<!-- Image Index -->
 <!-- Project -->
 
-[@project-url]: https://github.com/huyagci/bootcamp-final-project/projects/1
 [#project-board]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/project-board.png
-[@issues]: https://github.com/huyagci/bootcamp-final-project/issues?q=is%3Aissue+is%3Aclosed
-[@gh-actions]: https://github.com/huyagci/bootcamp-final-project/actions
-[@gl-cicd]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
-[@templates]: https://github.com/huyagci/bootcamp-final-project/issues/new/choose
-[@jump-to-top]: #open_book-table-of-contents
 
-<!-- Badge Index -->
-<!-- Images -->
+<!-- Badges -->
 
 [#alpine]: https://img.shields.io/badge/Alpine-0D597F?style=flat&logo=alpine-linux&logoColor=white
 [#sh]: https://img.shields.io/badge/Shell_Script-4EAA25?style=flat&logo=gnu-bash&logoColor=white
@@ -147,21 +135,7 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [#aws]: https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazonaws&logoColor=white
 [#kubernetes]: https://img.shields.io/badge/kubernetes-326ce5.svg?&style=flat&logo=kubernetes&logoColor=white
 
-<!-- URLs -->
-
-[@alpine]: https://www.alpinelinux.org/
-[@sh]: https://www.shellscript.sh/
-[@vagrant]: https://www.vagrantup.com/
-[@gitlab]: https://docs.gitlab.com/ee/ci/
-[@gh-actions]: https://docs.github.com/en/actions
-[@react]: https://reactjs.org/
-[@docker]: https://www.docker.com/
-[@terraform]: https://www.terraform.io/
-[@aws]: https://aws.amazon.com/
-[@kubernetes]: https://kubernetes.io/
-
-<!-- AWS Index -->
-<!-- Icons -->
+<!-- AWS Icons -->
 
 [#aas]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/appautoscaling.svg
 [#budgets]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/budgets.svg
@@ -175,7 +149,39 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [#s3]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/s3.svg
 [#vpc]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/vpc.svg
 
-<!-- URLs -->
+<!-- Diagram -->
+
+[#drawio]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/aws_infra.svg
+
+<!-- URL Index -->
+<!-- Project -->
+
+[@project-url]: https://github.com/huyagci/bootcamp-final-project/projects/1
+[@issues]: https://github.com/huyagci/bootcamp-final-project/issues?q=is%3Aissue+is%3Aclosed
+[@gh-actions]: https://github.com/huyagci/bootcamp-final-project/actions
+[@gl-cicd]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
+[@templates]: https://github.com/huyagci/bootcamp-final-project/issues/new/choose
+[@jump-to-top]: #open_book-table-of-contents
+
+<!-- External -->
+
+[@patika]: https://www.patika.dev/
+[@protein]: https://protein.tech/
+
+<!-- Technologies -->
+
+[@alpine]: https://www.alpinelinux.org/
+[@sh]: https://www.shellscript.sh/
+[@vagrant]: https://www.vagrantup.com/
+[@gitlab]: https://docs.gitlab.com/ee/ci/
+[@gh-actions]: https://docs.github.com/en/actions
+[@react]: https://reactjs.org/
+[@docker]: https://www.docker.com/
+[@terraform]: https://www.terraform.io/
+[@aws]: https://aws.amazon.com/
+[@kubernetes]: https://kubernetes.io/
+
+<!-- AWS -->
 
 [@iam]: https://aws.amazon.com/iam/
 [@budgets]: https://aws.amazon.com/aws-cost-management/aws-budgets/
@@ -188,7 +194,3 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 [@fargate]: https://aws.amazon.com/fargate/
 [@aas]: https://aws.amazon.com/autoscaling/
 [@cloudwatch]: https://aws.amazon.com/cloudwatch/
-
-<!-- Diagram -->
-
-[#drawio]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/aws_infra.svg
