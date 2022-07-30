@@ -19,9 +19,10 @@ If you are looking for something specific, check out the [directory content](#op
    - [Optional Tasks](#asterisk-optional-tasks)
 2. [Overview](#notebook_with_decorative_cover-overview-)
 3. [Featured](#sparkles-featured-)
-4. [AWS Infrastructure](#electric_plug-aws-infrastructure-)
+4. [Project Board](#date-project-board-)
+5. [AWS Infrastructure](#electric_plug-aws-infrastructure-)
    - [Infrastructure Visualization](#infrastructure-visualization)
-5. [Directory Content](#open_file_folder-directory-content-)
+6. [Directory Content](#open_file_folder-directory-content-)
 
 ### :hash: **Assignment** [🔝][@jump-to-top]
 
@@ -60,11 +61,19 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 > - Automated CI/CD main [pipeline][@gl-cicd] on Gitlab.
 > - Simple [workflow][@gh-actions] on Github to mirror this repository to Gitlab. (Also produces another Docker Image to Docker Hub for the demonstrative purposes)
 > - Both pipelines are working on self-hosted runners.
-> - Example [project board][@project] to demonstrate Scrum framework by using Github Projects & [Issues][@issues].
+> - Example [project board][@project-url] to demonstrate Scrum framework by using Github Projects & [Issues][@issues].
 > - YAML [templates][@templates] for issues and pull requests for making data inputs easier.
 > - Both pipelines are working on self-hosted runners.
 > - Auxilary shell scripts and k8s deployment manifests.
 > - Vagrantfile to easier build a VM test environment for shell scripts.
+
+### :date: **Project Board** [🔝][@jump-to-top]
+
+To demonstrate the Agile framework, a scaled-down Scrum methodology is used to utilize total project time with the most efficiency. Originally, I intended to use Jira Software but due to the timeframe of the project, I decided to use [Github Projects][@project-url]. [Issues][@issues] are utilized as a backlog of the board and the board cards are populated from here. The image below is an example taken in the middle of the project.
+
+[![Project Board][#project-board]][@project-url]
+
+### :date: **Project Board** [🔝][@jump-to-top]
 
 ### :electric_plug: **AWS Infrastructure** [🔝][@jump-to-top]
 
@@ -86,7 +95,7 @@ The project presents an example of a fully automated DevOps CI/CD cycle with the
 
 #### _Infrastructure Visualization_
 
-![AWS Infrastructure Diagram][@drawio]
+![AWS Infrastructure Diagram][#drawio]
 
 ### :open_file_folder: **Directory Content** [🔝][@jump-to-top]
 
@@ -116,7 +125,8 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 
 <!-- Project -->
 
-[@project]: https://github.com/huyagci/bootcamp-final-project/projects/1
+[@project-url]: https://github.com/huyagci/bootcamp-final-project/projects/1
+[#project-board]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/project-board.png
 [@issues]: https://github.com/huyagci/bootcamp-final-project/issues?q=is%3Aissue+is%3Aclosed
 [@gh-actions]: https://github.com/huyagci/bootcamp-final-project/actions
 [@gl-cicd]: https://gitlab.com/huyagci/bootcamp-final-project/-/pipelines
@@ -181,4 +191,4 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 
 <!-- Diagram -->
 
-[@drawio]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/aws_infra.svg
+[#drawio]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/aws_infra.svg
