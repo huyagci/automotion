@@ -52,7 +52,7 @@ If you are looking for something specific, check out the [directory content](#op
 
 The project presents an example of a fully automated DevOps CI/CD cycle with the ability to deploy on AWS infrastructure. Check out the featured section for a quick preview of the project features.
 
-<p align="center"><img src="./assets/img/automotion.png" alt="Project Branding Image"></a></p>
+<p align="center"><img src="./assets/images/automotion.png" alt="Project Branding Image"></a></p>
 
 ### :sparkles: **Featured** [🔝][@jump-to-top]
 
@@ -129,8 +129,8 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 <!-- Image Index -->
 <!-- Project -->
 
-[#project-board]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/project-board.png
-[#gl-pipeline]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/gitlab-pipeline.png
+[#project-board]: ./assets/images/project-board.png
+[#gl-pipeline]: ./assets/images/gitlab-pipeline.png
 
 <!-- Badges -->
 
@@ -147,21 +147,21 @@ terraform/  : Modular Terraform Stack featuring most AWS services.
 
 <!-- AWS Icons -->
 
-[#aas]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/appautoscaling.svg
-[#budgets]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/budgets.svg
-[#cloudwatch]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/cloudwatch.svg
-[#dynamodb]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/dynamodb.svg
-[#ecr]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/ecr.svg
-[#ecs]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/ecs.svg
-[#elb]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/elb.svg
-[#fargate]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/fargate.svg
-[#iam]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/iam.svg
-[#s3]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/s3.svg
-[#vpc]: https://automotion-assets.s3.eu-central-1.amazonaws.com/icons/vpc.svg
+[#aas]: ./assets/icons/appautoscaling.svg
+[#budgets]: ./assets/icons/budgets.svg
+[#cloudwatch]: ./assets/icons/cloudwatch.svg
+[#dynamodb]: ./assets/icons/dynamodb.svg
+[#ecr]: ./assets/icons/ecr.svg
+[#ecs]: ./assets/icons/ecs.svg
+[#elb]: ./assets/icons/elb.svg
+[#fargate]: ./assets/icons/fargate.svg
+[#iam]: ./assets/icons/iam.svg
+[#s3]: ./assets/icons/s3.svg
+[#vpc]: ./assets/icons/vpc.svg
 
 <!-- Diagram -->
 
-[#drawio]: https://automotion-assets.s3.eu-central-1.amazonaws.com/images/aws_infra.svg
+[#drawio]: ./assets/images/aws_infra.svg
 
 <!-- URL Index -->
 <!-- Project -->
