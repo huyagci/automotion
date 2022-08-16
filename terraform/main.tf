@@ -2,15 +2,17 @@ terraform {
 
   required_version = ">= 0.13"
 
-  # This project is connected to a remote state on AWS S3.
-  # There is a state-lock in effect by AWS DynamoDB to prevent conflicts with local changes and Gitlab CI/CD changes.
-  backend "s3" {
-    bucket         = "papp-tf-state-bucket"
-    key            = "state/terraform.tfstate"
-    region         = "eu-central-1"
-    dynamodb_table = "tf-state-lock"
-    encrypt        = true
-  }
+  # This project was connected to a remote state on AWS S3.
+  # There was a state-lock in effect by AWS DynamoDB to prevent conflicts with local changes and Gitlab CI/CD changes.
+  # To enable it, run "terraform init" to create .tf state file locally, uncomment backend block(above) and run the same command again.
+
+  # backend "s3" {
+  #   bucket         = "papp-tf-state-bucket"
+  #   key            = "state/terraform.tfstate"
+  #   region         = "eu-central-1"
+  #   dynamodb_table = "tf-state-lock"
+  #   encrypt        = true
+  # }
 
   required_providers {
     aws = {
@@ -69,20 +71,20 @@ module "cloudwatch" {
   SCALE_IN_POLICY_ARN  = module.autoscaling.SCALE_IN_POLICY_ARN
 }
 
-# # Required only for the initial creation of remote backend state storage.
-# module "dynamodb" {
-#   source = "./modules/dynamodb"
-# }
+# Required only for the initial creation of remote backend state storage.
+module "dynamodb" {
+  source = "./modules/dynamodb"
+}
 
-# # Required only for the initial creation of remote backend state lock.
-# module "s3" {
-#   source = "./modules/s3"
-# }
+# Required only for the initial creation of remote backend state lock.
+module "s3" {
+  source = "./modules/s3"
+}
 
-# # Bootstrapping ECR Private Repository for Gitlab CI/CD.
-# module "ecr" {
-#   source = "./modules/ecr"
-# }
+# Bootstrapping ECR Private Repository for Gitlab CI/CD.
+module "ecr" {
+  source = "./modules/ecr"
+}
 
 module "ecs" {
   source = "./modules/ecs"
